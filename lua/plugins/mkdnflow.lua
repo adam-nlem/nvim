@@ -1,1 +1,6 @@
- require('mkdnflow').setup({})
+ require('mkdnflow').setup({
+     mappings = {
+         MkdnFoldSection = false,
+         MkdnUnfoldSection = false,
+     }
+ })

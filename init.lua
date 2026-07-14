@@ -1,5 +1,5 @@
 vim.g.start_time = vim.fn.reltime()
-vim.loader.enable() --  SPEEEEEEEEEEED 
+vim.loader.enable() 
 
 local plugins = {
     {src = 'https://github.com/catppuccin/nvim', name = 'catppuccin'},

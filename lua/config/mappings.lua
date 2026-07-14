@@ -89,14 +89,6 @@ map("n", "]c", ":lua require('decisive').align_csv_next_col()<cr>")
 
 map("n", "<leader>H", ":lua require('FTerm').toggle()<CR>")
 
-
-map("n", "<leader>ma", function() --quick make in dir of buffer
-	local bufdir = vim.fn.expand("%:p:h")
-	vim.cmd("lcd " .. bufdir)
-	vim.cmd("!sudo make uninstall && sudo make clean install %")
-end)
-
-
 map("n", "<leader>nn", function() --toggle relative vs absolute line numbers
 	if vim.wo.relativenumber then
 		vim.wo.relativenumber = false
@@ -114,24 +106,3 @@ map('i', '<CR>', function()
     return '<CR>'
   end
 end, { expr = true, noremap = true, silent = true })
-
-
-map({ "i", "s" }, "<Tab>", function()
-  if vim.fn.pumvisible() == 1 then
-    return "<C-n>"
-  elseif luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
-  else
-    return "<Tab>"
-  end
-end, { expr = true, silent = true })
-
-map({ "i", "s" }, "<S-Tab>", function()
-  if vim.fn.pumvisible() == 1 then
-    return "<C-p>"
-  elseif luasnip.jumpable(-1) then
-    luasnip.jump(-1)
-  else
-    return "<S-Tab>"
-  end
-end, { expr = true, silent = true })
