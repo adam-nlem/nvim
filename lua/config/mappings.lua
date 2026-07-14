@@ -16,7 +16,9 @@ map("n", "<leader>q", ":bdelete<CR>")
 map("n", "<leader>Q", ":bdelete!<CR>")
 map("n", "<leader>U", "::bufdo bd<CR>") --close all
 map('n', '<leader>vs', ":vsplit<CR>:lua require('fzf-lua').files()<CR>") --ver split + open fuzzy finder
+map('n', '<leader>hs', ":split<CR>:lua require('fzf-lua').files()<CR>") --hor split + open fuzzy finder
 map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+map('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
 map('n', '<leader>r', ':lua vim.lsp.buf.rename()<CR>')
 
 -- buffer position nav + reorder
@@ -105,10 +107,31 @@ map("n", "<leader>nn", function() --toggle relative vs absolute line numbers
 end)
 
 -- confirm completion with <CR> instead of inserting a newline, when the popup is visible
-vim.keymap.set('i', '<CR>', function()
+map('i', '<CR>', function()
   if vim.fn.pumvisible() == 1 then
     return '<C-y>'
   else
     return '<CR>'
   end
 end, { expr = true, noremap = true, silent = true })
+
+
+map({ "i", "s" }, "<Tab>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-n>"
+  elseif luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  else
+    return "<Tab>"
+  end
+end, { expr = true, silent = true })
+
+map({ "i", "s" }, "<S-Tab>", function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-p>"
+  elseif luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  else
+    return "<S-Tab>"
+  end
+end, { expr = true, silent = true })
