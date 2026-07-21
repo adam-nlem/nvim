@@ -21,7 +21,6 @@ local plugins = {
     'https://github.com/mason-org/mason.nvim',
     'https://github.com/mason-org/mason-lspconfig.nvim',
     'https://github.com/numToStr/FTerm.nvim',
-    'https://github.com/jakewvincent/mkdnflow.nvim',
     'https://github.com/MeanderingProgrammer/render-markdown.nvim',
 }
 
@@ -45,7 +44,6 @@ require("plugins.comfy-line-numbers")
 require("plugins.twilight")
 require("plugins.lsp")
 require("plugins.fterm")
-require("plugins.mkdnflow")
 require("plugins.render-markdown")
-
+require("plugins.md-nvim")
 load_theme()

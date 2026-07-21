@@ -3,6 +3,20 @@ require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls", "ts_ls", "eslint", "intelephense", "tailwindcss" },
 })
 
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = { 'vim' } },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
+      },
+      telemetry = { enable = false },
+    },
+  },
+})
+
 local kind_icons = {
   Text = "󰉿", Method = "󰆧", Function = "󰊕", Constructor = "",
   Field = "󰜢", Variable = "󰀫", Class = "󰠱", Interface = "",

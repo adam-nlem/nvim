@@ -73,6 +73,7 @@ map("n", "<leader>R", ":so %<CR>") --reload neovim config
 map("v", "<leader>i", "=gv") --auto indent
 map("n", "<leader>W", ":set wrap!<CR>") --toggle wrap
 map("n", "<leader>l", ":Twilight<CR>") --surrounding dim
+map("n", "<CR>", ":MdNvimCreateFromLink<CR>") -- Open md link 
 
 -- git
 map("n", "<leader>gs", ":Git<CR>") --surrounding dim
