@@ -1,0 +1,7 @@
+theme = Catppuccin Frappe
+background = #000000
+background-opacity = 0.5
+background-blur =  macos-glass-regular
+scrollbar = never
+#fullscreen = non-native
+mouse-hide-while-typing = true
